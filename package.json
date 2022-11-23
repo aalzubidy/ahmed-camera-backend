@@ -1,11 +1,12 @@
 {
   "name": "ahmed-camera",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Ahmed camera backend",
   "main": "app.js",
   "scripts": {
-    "preinstall": "",
-    "test": "ACCESS_TOKEN_SECRET=test REFRESH_TOKEN_SECRET=test nyc --recursive --reporter=html --reporter=text --reporter-dir=coverage/unit mocha --recursive test/unit --silent",
+    "preinstall": "node ./installGitHooks.js",
+    "test": "",
+    "test-backup": "ACCESS_TOKEN_SECRET=test REFRESH_TOKEN_SECRET=test nyc --recursive --reporter=html --reporter=text --reporter-dir=coverage/unit mocha --recursive test/unit --silent",
     "lint": "eslint . --ext .json --ext .js --ext .ts",
     "dev": "nodemon app.ts | pino-pretty",
     "build": "tsc"
