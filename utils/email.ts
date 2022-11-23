@@ -35,7 +35,7 @@ const sendEmailText = async function sendEmailText(emailTo: string, subject: str
     });
 
     const info = await transporter.sendMail({
-      from: `"NodeApp " <${emailAccount.user}>`,
+      from: `"Ahmed Camera " <${emailAccount.user}>`,
       to: emailTo,
       subject,
       text: body

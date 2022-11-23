@@ -1,2 +1,2 @@
-# nodejs-ts-template
-Nodejs express with typescript base template for my projects
+# ahmed-camera-backend
+Ahmed camera backend with nodejs and TS

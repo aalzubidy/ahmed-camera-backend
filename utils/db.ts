@@ -1,7 +1,7 @@
 import { Pool } from 'pg';
 import { logger } from './logger';
 
-const connectionString = process.env.NODEAPP_DB_URI;
+const connectionString = process.env.AHMED_CAMERA_BACKEND_DB_URI;
 
 const pool = new Pool({
   connectionString: connectionString,

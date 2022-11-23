@@ -1,7 +1,7 @@
 {
-  "name": "nodeapp",
+  "name": "ahmed-camera",
   "version": "1.0.0",
-  "description": "NodeJS typescript template",
+  "description": "Ahmed camera backend",
   "main": "app.js",
   "scripts": {
     "preinstall": "",
