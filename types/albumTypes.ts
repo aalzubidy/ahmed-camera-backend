@@ -1,9 +1,3 @@
-interface CodeMessageError {
-    code: number,
-    message: string,
-    [extraKeys?: string | number | symbol]: unknown
-}
-
 interface AlbumIF {
     id: string,
     title: string,
@@ -11,3 +5,7 @@ interface AlbumIF {
     create_date: string,
     description?: string
 }
+
+export {
+    AlbumIF
+};

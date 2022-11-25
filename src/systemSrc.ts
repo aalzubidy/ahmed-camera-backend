@@ -1,6 +1,7 @@
 import { logger } from '../utils/logger';
 import { srcFileErrorHandler } from '../utils/srcFile';
 import * as packageJSONFile from '../package.json';
+import { CodeMessageError } from '../types/srcApiTypes';
 
 /**
  * @function getSystemVersion

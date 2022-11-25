@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { logger } from './logger';
 import { isHttpCode } from './httpTools';
+import { CodeMessageError } from '../types/srcApiTypes';
 // const authorizationSrc = require('../src/authorizationSrc');
 
 /**
@@ -99,8 +100,32 @@ const srcFileErrorHandler = async function srcFileErrorHandler(error: any, respo
   throw { code: responseCode, message: responseMessage };
 };
 
+/**
+ * @function srcFileRouterErrorhandler
+ * @description Check if the error has an http code, a message, then handle retruning an error response
+ * @param {*} error - Error to handle
+ * @param {req} req - Http express request
+ * @param {Response} res - Http express response
+ */
+const srcFileRouterErrorhandler = function srcFileRouterErrorhandler(error: any, req: Request, res: Response): void {
+  logger.error(error);
+  if (error && error.code) {
+    res.status(error.code).json({
+      error
+    });
+  } else {
+    res.status(500).json({
+      error: {
+        code: 500,
+        message: `Could not process ${req.originalUrl} request`
+      }
+    });
+  }
+};
+
 export {
   callSrcFile,
   callSrcFileSkipVerify,
-  srcFileErrorHandler
+  srcFileErrorHandler,
+  srcFileRouterErrorhandler
 };

@@ -1,6 +1,8 @@
 import nodemailer from 'nodemailer';
 import { logger } from './logger';
 import { isHttpCode } from './httpTools';
+import { SendEmailTextResponse } from '../types/utilsTypes';
+import { CodeMessageError } from '../types/srcApiTypes';
 
 /**
  * @function sendEmailText

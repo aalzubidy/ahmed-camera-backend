@@ -1,5 +1,7 @@
+/* eslint-disable import/first */
 // Import dotenv
 import dotenv from 'dotenv';
+dotenv.config();
 
 // Import modules
 import express, { Express } from 'express';
@@ -15,10 +17,11 @@ import { logger } from './utils/logger';
 import { routesLogger } from './utils/routesLogger';
 
 // Import routes
-import systemRoutes from './routes/system';
+import systemRoutes from './routes/systemRoutes';
+import albumRoutes from './routes/albumRoutes';
+/* eslint-enable  import/first */
 
 // Application Setup
-dotenv.config();
 const app: Express = express();
 const serverPort = 3030;
 const serverUrl = 'localhost';
@@ -67,6 +70,9 @@ app.get('/', async (req, res) => {
 
 // System and stats routes
 app.use(systemRoutes);
+
+// Album routes
+app.use(albumRoutes);
 
 // Upload a new file
 app.post('/uploadFile', (req, res) => {
