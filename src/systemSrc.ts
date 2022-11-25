@@ -8,7 +8,7 @@ import * as packageJSONFile from '../package.json';
  * @returns {string} systemVersionResults
  * @throws {object} errorCodeAndMsg
  */
-const getSystemVersion = async function getSystemVersion(): Promise<string> {
+const getSystemVersion = async function getSystemVersion(): Promise<string | CodeMessageError> {
   try {
     const version = packageJSONFile?.version;
     logger.debug({ label: 'system version response', results: version });

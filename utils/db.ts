@@ -8,11 +8,12 @@ const pool = new Pool({
 });
 
 const query = async function query(text: string, params: (string | number)[], queryLabel = '') {
+  logger.debug({ label: `about to execute db query - ${queryLabel}`, text, params });
   const start = Date.now();
   const res = await pool.query(text, params);
   const duration = Date.now() - start;
   logger.debug({ label: `executed db query - ${queryLabel}`, text, params, duration, rowCount: res.rowCount, rows: res.rows });
-  return res;
+  return res.rows || res;
 };
 
 export {

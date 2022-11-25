@@ -90,7 +90,7 @@ const callSrcFileSkipVerify = async (srcFile: any, functionName: string, paramet
  * @param {number} responseCode - Http code to send on response
  * @throws errorWithCode
  */
-const srcFileErrorHandler = async function srcFileErrorHandler(error: any, responseMessage: string, responseCode = 500) {
+const srcFileErrorHandler = async function srcFileErrorHandler(error: any, responseMessage: string, responseCode = 500): Promise<CodeMessageError> {
   if (error.code && isHttpCode(error.code)) {
     logger.error(error);
     throw error;

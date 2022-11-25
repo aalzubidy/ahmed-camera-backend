@@ -55,6 +55,7 @@ module.exports = {
     '@typescript-eslint/comma-dangle': 'off',
     '@typescript-eslint/no-throw-literal': 'off',
     'import/prefer-default-export': 'off',
-    '@typescript-eslint/no-explicit-any': 'off'
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/lines-between-class-members': 'off'
   }
 };
