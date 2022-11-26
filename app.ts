@@ -19,6 +19,7 @@ import { routesLogger } from './utils/routesLogger';
 // Import routes
 import systemRoutes from './routes/systemRoutes';
 import albumRoutes from './routes/albumRoutes';
+import photoRoutes from './routes/photoRoutes';
 /* eslint-enable  import/first */
 
 // Application Setup
@@ -73,6 +74,9 @@ app.use(systemRoutes);
 
 // Album routes
 app.use(albumRoutes);
+
+// Photo routes
+app.use(photoRoutes);
 
 // Upload a new file
 app.post('/uploadFile', (req, res) => {

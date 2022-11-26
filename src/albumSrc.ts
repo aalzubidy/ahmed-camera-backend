@@ -57,7 +57,7 @@ class Album implements AlbumIF {
 
             return this.getCurrentAlbum();
         } catch (error) {
-            return srcFileErrorHandler(error, 'Could not update album description');
+            return srcFileErrorHandler(error, 'Could not get album by id');
         }
     }
 

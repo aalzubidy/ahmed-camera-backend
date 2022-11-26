@@ -77,7 +77,7 @@ router.patch('/album/:albumId/albumDate', async (req: Request, res: Response) =>
 });
 
 /**
- * @summary Update album date by id
+ * @summary Update album description by id
  */
 router.patch('/album/:albumId/description', async (req: Request, res: Response) => {
   try {
