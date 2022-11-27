@@ -142,6 +142,16 @@ class Photo implements PhotoIF {
             return srcFileErrorHandler(error, 'Could not remove photo to album');
         }
     }
+
+    static async getAllPhotos() {
+        try {
+            const allPhotos = await db.query('SELECT p.id, p.url, p.thumbnail, p.create_date, pd.description FROM photos p LEFT JOIN photos_descriptions pd ON p.id = pd.photo_id', [], 'get all photos and their descriptions');
+
+            return allPhotos;
+        } catch (error) {
+            return srcFileErrorHandler(error, 'Could not get all photos and their description');
+        }
+    }
 }
 
 export default Photo;

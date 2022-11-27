@@ -35,6 +35,21 @@ router.post('/photo/', async (req: Request, res: Response) => {
 });
 
 /**
+ * @summary Get all photos
+ */
+router.get('/photo', async (req: Request, res: Response) => {
+    try {
+        const data = await Photo.getAllPhotos();
+
+        res.status(200).json({
+            data
+        });
+    } catch (error) {
+        srcFileRouterErrorhandler(error, req, res);
+    }
+});
+
+/**
  * @summary Get a photo by id
  */
 router.get('/photo/:photoId', async (req: Request, res: Response) => {
