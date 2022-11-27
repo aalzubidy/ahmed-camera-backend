@@ -121,7 +121,7 @@ class Album implements AlbumIF {
 
     async getAlbumPhotosByAlbumId(offset: string | number) {
         try {
-            const allAlbumPhotos = await db.query('SELECT p.id, p.url, p.thumbnail, p.create_date, pd.description FROM photos p LEFT JOIN photos_descriptions pd ON p.id = pd.photo_id join albums_photos ap on ap.photo_id = p.id join albums a on a.id = ap.album_id where a.id = $1 limit 25 offset=$2', [this.id, offset], 'get all album photos by album id');
+            const allAlbumPhotos = await db.query('SELECT p.id, p.url, p.thumbnail, p.create_date, pd.description FROM photos p LEFT JOIN photos_descriptions pd ON p.id = pd.photo_id join albums_photos ap on ap.photo_id = p.id join albums a on a.id = ap.album_id where a.id = $1 limit 25 offset $2', [this.id, offset], 'get all album photos by album id');
 
             return allAlbumPhotos;
         } catch (error) {
