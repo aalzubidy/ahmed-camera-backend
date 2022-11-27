@@ -39,7 +39,9 @@ router.post('/photo/', async (req: Request, res: Response) => {
  */
 router.get('/photo', async (req: Request, res: Response) => {
     try {
-        const data = await Photo.getAllPhotos();
+        const offset = (req.query.offset)?.toString() || 0;
+
+        const data = await Photo.getAllPhotos(offset);
 
         res.status(200).json({
             data

@@ -24,7 +24,7 @@ router.post('/album/', async (req: Request, res: Response) => {
 /**
  * @summary Get all albums
  */
-router.get('/photo', async (req: Request, res: Response) => {
+router.get('/album', async (req: Request, res: Response) => {
   try {
     const data = await Album.getAllAlbums();
 
@@ -59,9 +59,10 @@ router.get('/album/:albumId', async (req: Request, res: Response) => {
 router.get('/album/:albumId/photos', async (req: Request, res: Response) => {
   try {
     const { albumId } = req.params;
+    const offset = (req.query.offset)?.toString() || 0;
     const newAlbum = new Album();
     newAlbum.setId(albumId);
-    const data = await newAlbum.getAlbumPhotosByAlbumId();
+    const data = await newAlbum.getAlbumPhotosByAlbumId(offset);
 
     res.status(200).json({
       data

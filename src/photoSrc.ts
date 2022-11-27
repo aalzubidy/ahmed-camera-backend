@@ -143,9 +143,9 @@ class Photo implements PhotoIF {
         }
     }
 
-    static async getAllPhotos() {
+    static async getAllPhotos(offset: string | number) {
         try {
-            const allPhotos = await db.query('SELECT p.id, p.url, p.thumbnail, p.create_date, pd.description FROM photos p LEFT JOIN photos_descriptions pd ON p.id = pd.photo_id', [], 'get all photos and their descriptions');
+            const allPhotos = await db.query('SELECT p.id, p.url, p.thumbnail, p.create_date, pd.description, a.id as album_id, a.title as album_title FROM photos p LEFT JOIN photos_descriptions pd ON p.id = pd.photo_id left join albums_photos ap on ap.photo_id = p.id left join albums a on a.id = ap.album_id order by create_date limit 25 offset $1', [offset], 'get all photos and their descriptions');
 
             return allPhotos;
         } catch (error) {
