@@ -1,8 +1,38 @@
 import express, { Request, Response } from 'express';
 import { srcFileRouterErrorhandler } from '../utils/srcFile';
 import Photo from '../src/photoSrc';
+import { uploadPhotoLocal, generateLowResImages, deletePhotosLocal } from '../utils/filesManager';
 
 const router = express.Router();
+
+/**
+ * @summary Upload photos
+ */
+router.post('/photo/', async (req: Request, res: Response) => {
+    let imagePaths: string[] = [];
+    try {
+        // Upload pictures to the server and get list of urls
+        const uploadFiles: any = await uploadPhotoLocal(req, res);
+        imagePaths = uploadFiles.imagePaths;
+
+        // Generate low resolution version of the images
+        await generateLowResImages(imagePaths);
+
+        // Create new photo in the database
+        const newPhotos = await Promise.all(imagePaths.map(async (imgPath) => {
+            const newPhoto = new Photo(imgPath, imgPath.replace('photos/', 'photos/thumbnails/'));
+            const createPhotoData = await newPhoto.createPhoto();
+            return (createPhotoData);
+        }));
+
+        res.status(200).json({
+            data: newPhotos
+        });
+    } catch (error) {
+        deletePhotosLocal(imagePaths);
+        srcFileRouterErrorhandler(error, req, res);
+    }
+});
 
 /**
  * @summary Get a photo by id

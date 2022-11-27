@@ -107,3 +107,4 @@ ignore/*
 
 public/files/userUpload/
 public/files/userUpload/**
+public/photos/**
