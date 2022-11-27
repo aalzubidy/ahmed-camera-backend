@@ -1,6 +1,6 @@
 {
   "name": "ahmed-camera",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Ahmed camera backend",
   "main": "app.js",
   "scripts": {
@@ -33,6 +33,7 @@
     "pino-multi-stream": "^6.0.0",
     "request-ip": "^3.3.0",
     "sharp": "^0.31.2",
+    "supertokens-node": "^12.1.1",
     "ts-node": "^10.9.1",
     "uuid": "^9.0.0",
     "winston": "^3.8.2"
